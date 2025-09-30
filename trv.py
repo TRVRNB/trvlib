@@ -10,17 +10,17 @@ def print_lines(n : int):
 	print("\n" * n)
 	return
 
-def print_grid(group : list, maxlen : int = 0):
+def print_grid(grid : list, maxlen : int = 0):
 	# cleanly prints a list of lists, spreadsheet-style. works best for a list of numbers
 	if maxlen == 0:
 		# look for longest item
-		for itemx in group:
+		for itemx in grid:
 			for itemy in itemx:
 				if len(str(itemy)) > maxlen:
 					maxlen = len(str(itemy))
 	# maxlen of inner items
 	maxlen2 = 0
-	for itemx in group:
+	for itemx in grid:
 		if len(itemx) > maxlen2:
 			maxlen2 = len(itemx)
 	# increase maxlen if it is lower than len(maxlen2)
@@ -35,7 +35,7 @@ def print_grid(group : list, maxlen : int = 0):
 	print(line)
 	# print items, now
 	i = 1
-	for itemx in group:
+	for itemx in grid:
 		line = str(i) + ")"
 		if maxlen > len(str(i)):
 			line += " " * (maxlen - len(str(i)))
