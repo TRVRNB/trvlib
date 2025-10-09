@@ -45,3 +45,14 @@ def print_grid(grid : list, maxlen : int = 0):
 				line += " " * (maxlen - len(str(itemy)))
 		print(line)
 		i += 1
+		
+def random_name(l : int = 2):
+	# generates a random full name of length l (for example, if l=2, then it will generate a first and last name)
+	NAMES = [
+	"Jim", "Sal", "Sam", "Charles", "Lee", "Max", "Anita", "James", "Jane", "Cory", "Melony", "David", "Patricia", "Cal", "Jake", "Susie", "Lily", "Nia", "Margaret", "Marcel",
+	"Alex", "Steve", "Johnson", "Jamal", "Peter", "Mason", "Cindy", "Louis", "Kelly", "Amanda", "Muhammad", "Carlos", "Lucita", "Milo", "Tucker", "Beatrice", "Julie",
+	]
+	name = ""
+	for _ in range(l):
+		name += random.choice(NAMES) + " "
+	return name.strip()
