@@ -56,3 +56,41 @@ def random_name(l : int = 2):
 	for _ in range(l):
 		name += random.choice(NAMES) + " "
 	return name.strip()
+	
+def randi(seed : int, min : int, max : int):
+	# returns a random int using a seed
+	random.seed(seed)
+	return random.randint(min, max)
+	
+def cypher(key : int, text : str):
+	# cyphers text using a specific "key"
+	CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*(){}[]<>/\\,.:;'\"+=-_ "
+	mchar = len(CHARS) - 1
+	seed = key
+	ciphered = ""
+	for char in text:
+		char = CHARS.index(char)
+		char += randi(seed, 0, mchar)
+		if char > mchar:
+			char -= mchar + 2
+		ciphered += CHARS[char]
+		seed += 1
+	return ciphered
+
+def decypher(key : int, text : int):
+	# inverse of cypher()
+	CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*(){}[]<>/\\,.:;'\"+=-_ 	"
+	mchar = len(CHARS) - 1
+	seed = key
+	deciphered = ""	
+	for char in text:
+		char = CHARS.index(char)
+		char -= randi(seed, 0, mchar)
+		if char > mchar:
+			char -= mchar + 2
+		deciphered += CHARS[char]
+		seed += 1
+	return deciphered
+
+seed = random.randint(1, 999999)
+print(decypher(seed, cypher(seed	, "hello!")))
