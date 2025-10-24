@@ -1,6 +1,10 @@
 import random, sys, math
 from typing import Union
 
+def version():
+	# returns version number
+	return 1.2
+
 def sign(x : Union[int, float]):
 	# 1 if positive, 0 if 0, -1 if negative
 	return (x > 0) - (x < 0)
@@ -91,6 +95,3 @@ def decypher(key : int, text : int):
 		deciphered += CHARS[char]
 		seed += 1
 	return deciphered
-
-seed = random.randint(1, 999999)
-print(decypher(seed, cypher(seed	, "hello!")))
